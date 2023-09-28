@@ -1,0 +1,100 @@
+  [1m[35m (67.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (43.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAuthors (20230928074718)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "authors" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "bio" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230928074718"]]
+  [1m[36mTRANSACTION (45.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (20230928074821)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "pages" integer, "author_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_53d51ce16a"
+FOREIGN KEY ("author_id")
+  REFERENCES "authors" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_books_on_author_id" ON "books" ("author_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230928074821"]]
+  [1m[36mTRANSACTION (42.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddGenreToBooks (20230928074849)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "books" ADD "genre" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230928074849"]]
+  [1m[36mTRANSACTION (33.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-09-28 07:53:01.161010"], ["updated_at", "2023-09-28 07:53:01.161010"]]
+  [1m[36mTRANSACTION (33.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "J.K. Rowling"], ["bio", "British author best known for the Harry Potter series"], ["created_at", "2023-09-28 07:53:01.216019"], ["updated_at", "2023-09-28 07:53:01.216019"]]
+  [1m[36mTRANSACTION (36.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "George Orwell"], ["bio", "English novelist and essayist, known for 1984 and Animal Farm"], ["created_at", "2023-09-28 07:53:01.254844"], ["updated_at", "2023-09-28 07:53:01.254844"]]
+  [1m[36mTRANSACTION (33.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Jane Austen"], ["bio", "English novelist known for Pride and Prejudice and Sense and Sensibility"], ["created_at", "2023-09-28 07:53:01.290846"], ["updated_at", "2023-09-28 07:53:01.290846"]]
+  [1m[36mTRANSACTION (33.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "pages", "author_id", "created_at", "updated_at", "genre") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Harry Potter and the Sorcerer's Stone"], ["pages", 320], ["author_id", 1], ["created_at", "2023-09-28 07:53:01.343340"], ["updated_at", "2023-09-28 07:53:01.343340"], ["genre", "Fantasy"]]
+  [1m[36mTRANSACTION (34.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "pages", "author_id", "created_at", "updated_at", "genre") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "1984"], ["pages", 328], ["author_id", 2], ["created_at", "2023-09-28 07:53:01.381434"], ["updated_at", "2023-09-28 07:53:01.381434"], ["genre", "Dystopian Fiction"]]
+  [1m[36mTRANSACTION (36.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("title", "pages", "author_id", "created_at", "updated_at", "genre") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Pride and Prejudice"], ["pages", 279], ["author_id", 3], ["created_at", "2023-09-28 07:53:01.422088"], ["updated_at", "2023-09-28 07:53:01.422088"], ["genre", "Romantic Fiction"]]
+  [1m[36mTRANSACTION (36.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2023-09-28 07:56:58 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/rvm/gems/ruby-3.2.2/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/rvm/gems/ruby-3.2.2/gems/railties-7.0.8/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.2ms | Allocations: 632)
+Completed 200 OK in 13ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 7140)
+
+
+Started GET "/authors" for 127.0.0.1 at 2023-09-28 07:57:05 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/authors"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-09-28 07:57:05 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/authors" for 127.0.0.1 at 2023-09-28 07:58:03 +0000
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors"[0m
+  ↳ app/controllers/authors_controller.rb:4:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."author_id" = ?[0m  [["author_id", 1]]
+[active_model_serializers]   ↳ app/controllers/authors_controller.rb:4:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."author_id" = ?[0m  [["author_id", 2]]
+[active_model_serializers]   ↳ app/controllers/authors_controller.rb:4:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."author_id" = ?[0m  [["author_id", 3]]
+[active_model_serializers]   ↳ app/controllers/authors_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (22.43ms)
+Completed 200 OK in 41ms (Views: 35.8ms | ActiveRecord: 1.2ms | Allocations: 27465)
+
+
+Started GET "/books" for 127.0.0.1 at 2023-09-28 07:58:13 +0000
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/books_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1358)
+
+
+Started GET "/book/1" for 127.0.0.1 at 2023-09-28 07:58:17 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/book/1"):
+  
+Started GET "/books/1" for 127.0.0.1 at 2023-09-28 07:58:22 +0000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:8:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 969)
+
+
