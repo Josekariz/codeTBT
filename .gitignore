@@ -1,2 +1,3 @@
 tmp/cache/
-config/master.key
+
+/config/master.key
