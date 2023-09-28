@@ -27,8 +27,8 @@ The Library API is a simple Ruby on Rails API for managing a library's authors a
 
 To run this API, you need the following:
 
-- Ruby (version X.X.X)
-- Rails (version X.X.X)
+- Ruby >= 2.6.0
+- Rails 
 - SQLite 3
 
 ### Installation
@@ -39,19 +39,14 @@ To run this API, you need the following:
    git clone https://github.com/yourusername/library-api.git
    ```
 
-2. Navigate to the project directory:
 
-   ```bash
-   cd library-api
-   ```
-
-3. Install dependencies:
+2. Install dependencies:
 
    ```bash
    bundle install
    ```
 
-4. Create the database and run migrations:
+3. Create the database and run migrations:
 
    ```bash
    rails db:create
