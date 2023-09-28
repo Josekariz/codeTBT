@@ -1,0 +1,3 @@
+tmp/cache/
+db/schema.rb
+db/migrate/
